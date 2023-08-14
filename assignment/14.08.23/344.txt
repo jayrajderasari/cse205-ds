@@ -1,0 +1,14 @@
+class Solution(object):
+    def helper(self,i, s):
+        if(i>=len(s)/2):
+            return
+        (s[i],s[len(s)-i-1]) = (s[len(s)-i-1],s[i])
+        Solution().helper(i+1,s)
+ 
+    def reverseString(self, s):
+        """
+        :type s: List[str]
+        :rtype: None Do not return anything, modify s in-place instead.
+        """
+        Solution().helper(0,s)
+        
