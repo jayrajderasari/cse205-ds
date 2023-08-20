@@ -4,9 +4,24 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        nums.sort()
-        result = [[]]
-        for n in nums:
-            for i in result:
-                result = result + [i + [n]]
-        return result
+        def reccursiveFunction(i,path):
+            result.append(path)
+            for j in range(i,len(nums)):
+                reccursiveFunction(j+1,path+[nums[j]])
+        result = []
+        reccursiveFunction(0,[])
+        return result
+
+
+# class Solution(object):
+#     def subsets(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: List[List[int]]
+#         """
+#         nums.sort()
+#         result = [[]]
+#         for n in nums:
+#             for i in result:
+#                 result = result + [i + [n]]
+#         return result
