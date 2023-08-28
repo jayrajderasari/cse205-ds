@@ -1,0 +1,12 @@
+class Solution:
+    def combine(self, n,k):
+        ans = []
+        result = []
+        def recc(n,result):
+            if n==1 :
+                return [[1]]
+            x = recc(n-1,result)
+            z = (x + [[n] + y for y in x]) 
+            return z
+        result = recc(n,[])
+        return result

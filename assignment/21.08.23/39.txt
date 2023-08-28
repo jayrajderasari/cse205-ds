@@ -1,0 +1,22 @@
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        def recc(index, arr, target, ans, ds):
+            if (index==len(arr)):
+                if target == 0:
+                    z = list(ds)
+                    ans.append(z)
+                return
+            if (arr[index] <= target):
+                ds.append(arr[index])
+                recc(index, arr, target-arr[index], ans, ds)
+                ds.pop()
+            recc(index+1, arr, target, ans, ds)
+            return ans
+
+        ans = []
+        return recc(0,candidates, target, ans, [])        

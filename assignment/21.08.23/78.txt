@@ -1,0 +1,15 @@
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        result = []
+        def recc(nums):
+            if nums == []:
+                result = [[]]
+                return result
+            x = recc(nums[1:])
+            return (x + [[nums[0]] + y for y in x]) 
+        result = recc(nums)
+        return result
