@@ -1,0 +1,38 @@
+class Stack:
+    def __init__(self):
+        self.stack = list()
+    def push(self,val):
+        self.stack.append(val)
+        return
+    def pop(self):
+        return self.stack.pop(-1)
+    def len(self):
+        return len(self.stack)
+    def print(self):
+        return self.stack
+
+class Solution:
+    def calPoints(self, operations: List[str]) -> int:
+        stack1 = Stack()
+        for i in range(0,len(operations)):
+            if operations[i] == '+':
+                a = int(stack1.pop())
+                b = int(stack1.pop())
+                stack1.push(b)
+                stack1.push(a)
+                a = a + b
+                stack1.push(a)
+            elif operations[i] == 'D':
+                a = int(stack1.pop())
+                stack1.push (a)
+                a = 2*int(a)
+                stack1.push (a)
+            elif operations[i] == 'C':
+                stack1.pop()
+            else:
+                stack1.push(operations[i])
+        sum = 0
+        for i in range(0,stack1.len()):
+            sum = sum + int(stack1.pop())
+        return sum
+        

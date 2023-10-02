@@ -1,0 +1,51 @@
+class Stack:
+    def __init__(self):
+        self.stack = list()
+    def push(self,data):
+        self.stack.append(data)
+    def pop(self):
+        if len(self.stack)==0:
+            return None
+        x = self.stack.pop(-1)
+        return x
+    def len(self):
+        return len(self.stack)
+
+class MyQueue:
+
+    def __init__(self):
+        self.stack1 = Stack()
+        self.stack2 = Stack()        
+
+    def push(self, x: int) -> None:
+        self.stack1.push(x)
+        return
+
+    def pop(self) -> int:
+        while self.stack1.len() != 0:
+            self.stack2.push(self.stack1.pop()) 
+        x = self.stack2.pop()
+        while self.stack2.len() != 0:    
+            self.stack1.push(self.stack2.pop())
+        return x
+
+    def peek(self) -> int:
+        while self.stack1.len() != 0:
+            self.stack2.push(self.stack1.pop()) 
+        x = self.stack2.pop()
+        self.stack2.push(x)
+        while self.stack2.len() != 0:    
+            self.stack1.push(self.stack2.pop())
+        return x
+        
+    def empty(self) -> bool:
+        if self.stack1.len() == 0:
+            return True
+        # return False
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()

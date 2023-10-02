@@ -1,0 +1,24 @@
+class Stack:
+    def __init__(self):
+        self.stack = list()
+    def push(self,val):
+        self.stack.append(val)
+        return
+    def pop(self):
+        x = self.stack.pop(-1)
+        return x
+    def len(self):
+        return len(self.stack)
+
+class Solution:
+    def removeStars(self, s: str) -> str:
+        stack1 = Stack()
+        for a in s:
+            if a == "*":
+                stack1.pop()
+            else:
+                stack1.push(a)
+        s = ""
+        while stack1.len() != 0:
+            s = stack1.pop() + s
+        return s

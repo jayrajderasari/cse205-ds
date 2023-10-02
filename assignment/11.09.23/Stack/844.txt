@@ -1,0 +1,32 @@
+class Stack:
+    def __init__(self):
+        self.stack = list()
+        stack = self.stack
+    def push(self,data):
+        self.stack.append(data)
+    def pop(self):
+        if len(self.stack)==0:
+            return
+        return self.stack.pop(-1)
+    def len(self):
+        return len(self.stack)
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        stackS = Stack()
+        stackT = Stack()
+        for a in s:
+            if a == '#':
+                stackS.pop()
+            else:
+                stackS.push(a)
+        for b in t:
+            if b == '#':
+                stackT.pop()
+            else:
+                stackT.push(b)
+        if stackT.len() != stackS.len():
+            return False
+        while stackT.len()!=0:
+            if stackT.pop() != stackS.pop():
+                return False
+        return True
