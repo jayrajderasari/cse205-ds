@@ -1,0 +1,17 @@
+class Solution:
+    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+        i = 0
+        t = 0
+        while (tickets[0] == 1 and i == k) == False:
+            if tickets[0] != 0:
+                f = tickets.pop(0)
+                f -= 1
+                tickets.append(f)
+                t += 1
+            else:
+                f = tickets.pop(0)
+                tickets.append(f)
+                
+            i = (i+1)%len(tickets)
+        t += 1
+        return t

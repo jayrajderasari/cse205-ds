@@ -1,0 +1,24 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        d = {}
+        se = set(s)
+        z = 0
+        for i in se:
+            count = 0
+            for j in s:
+                if i == j:
+                    count += 1
+            if count not in d:
+                d[count] = i
+            else:
+                d[count] += i
+        st = ""
+        while len(d) != 0:
+            maxi = 0
+            for i in d:
+                maxi = max(i,maxi)
+            for i in d[maxi]:
+                for j in range(maxi):
+                    st = st + i
+            d.pop(maxi)
+        return st

@@ -1,0 +1,21 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        d = dict()
+        for n in nums:
+            if n in d:
+                d[n] += 1
+            else:
+                d[n] = 1
+        result = []
+        
+        for j in range(k):
+            ele = 0
+            freq = 0
+            for key, value in d.items():
+                if value > freq:
+                    freq = value
+                    ele = key
+            result.append(ele)
+            d.pop(ele)
+
+        return result

@@ -1,0 +1,17 @@
+class Solution:
+    def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
+        result = dict()
+        arr.sort()
+        for i in range(1,len(arr)):
+            diff = arr[i] - arr[i-1]
+            if diff in result:
+                x = result[diff]
+                x.append([arr[i-1],arr[i]])
+                result[diff] = x
+            else:
+                result[diff] = [[arr[i-1],arr[i]]]
+        i = 0
+        while i<=(max(arr)-min(arr)):
+            if i in result:
+                return result[i]
+            i += 1
