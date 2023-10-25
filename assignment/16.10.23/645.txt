@@ -1,0 +1,14 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        d = {}
+        result = []
+        for n in nums:
+            if n not in d:
+                d[n] = 1
+            else:
+                result.append(n)
+        for i in range(1,len(nums)+1):
+            if i not in d:
+                result.append(i)
+                break
+        return result

@@ -1,0 +1,11 @@
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        map = {}
+        result = 0
+        for n in nums:
+            if n in map:
+                result += map[n]
+                map[n] += 1
+            else:
+                map[n] = 1
+        return result
