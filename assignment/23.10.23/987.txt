@@ -1,0 +1,19 @@
+class Solution:
+    def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
+        map = defaultdict(list)
+        def dfs(x,y,node):
+            if not node:
+                return
+            dfs(x-1,y+1,node.left)
+            dfs(x+1,y+1,node.right)
+            map[(x,y)].append(node.val)
+        dfs(0,0,root)
+        result = []
+        old = float('-inf')
+        for k,v in sorted(map.items()):
+            print(k,v)
+            if k[0]!= old:
+                result.append([])
+            result[-1].extend(sorted(v))
+            old = k[0]
+        return result
