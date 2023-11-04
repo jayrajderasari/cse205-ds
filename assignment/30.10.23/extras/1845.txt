@@ -1,0 +1,21 @@
+class SeatManager:
+
+    def __init__(self, n: int):
+        self.vacantSeats = []
+        for i in range(1,n+1):
+            self.vacantSeats.append(i)
+        heapq.heapify(self.vacantSeats)
+
+    def reserve(self) -> int:
+        small = heapq.heappop(self.vacantSeats)
+        return small
+
+    def unreserve(self, seatNumber: int) -> None:
+        heapq.heappush(self.vacantSeats, seatNumber)
+        return
+
+
+# Your SeatManager object will be instantiated and called as such:
+# obj = SeatManager(n)
+# param_1 = obj.reserve()
+# obj.unreserve(seatNumber)
